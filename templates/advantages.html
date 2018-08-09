@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <nav class="headcrumbs">
+        <div class="container"><span><a href='/'>Главная</a> / <a href='/about'>О компании</a> / {{ title }}</span></div>
+    </nav>
+
+    {% include 'about/advantages.html' %}
+
+{% endblock %}

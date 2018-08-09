@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>Риал Строй | {{ title }}</title>
+	<meta name="description" content="{% if description %}{{ description }}{% else %}Ремонт квартир и домов под ключ{% endif %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="icon" href="favicon.png' %}" type="image/x-icon"/>
+	<link rel="shortcut icon" href="favicon.png' %}" type="image/x-icon"/>
+	<link rel="stylesheet" href="{% static 'libs/bootstrap/bootstrap-grid-3.3.1.min.css' %}"/>
+	<link href="{% static 'libs/owl-carousel/owl.carousel.css' %}" rel="stylesheet"/>
+	<link href="{% static 'libs/jquery-nice-select-1.1.0/css/nice-select.css' %}" rel="stylesheet"/>
+	<link href="{% static 'libs/fancybox/jquery.fancybox.min.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/fonts.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/normalize.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+	<link href="{% static 'css/media.css' %}" rel="stylesheet"/>
+</head>
+<body>
+	<div class="page-wrapper">
+		<nav class="page-navigation-wrap">
+			<div class="container">
+				<ul>
+                <a href="http://rial-remont.ru/">
+					    <li class="page-n1">Главная</li>
+                    </a>
+                
+                
+                    <a href="{% url 'about' %}">
+					    <li class="page-n1">О компании</li>
+                    </a>
+                    <a href="/#sales">
+					    <li class="page-n2">Акции</li>
+                    </a>
+                    <a href="/#faq">
+					    <li class="page-n3">Вопрос-Ответ</li>
+                    </a>
+                    <a href="{% url 'replies' %}">
+					    <li class="page-n5">Книга отзывов</li>
+                    </a>
+				</ul>
+			</div>
+		</nav>
+		<div class="menu-wrapper">
+			<header>
+				<div class="container">
+                    <a href="/"><img src="{% static 'img/logo.png' %}" alt="" class="header__logo" width="174"/></a>
+                    <a href="/"><img src="{% static 'img/logo1.png' %}" alt="" class="header__logo1" width="174"/></a>
+                    <span class="header__descriptor">Ремонт и дизайн квартир,<br>коттеджей, офисов, ресторанов</span>
+					<div class="header__contact">
+                      <a href="tel:88005114326">  <span class="header__phone">8 (800) 511-43-26 </span></a>
+                      
+                      <a class="header__phone1" href="tel:+7 (927) 422-34-30"><img src="http://rial-remont.ru/static/img/whatcapp.png" width="25" style="float: left;">  <span class="header__phone1">+7 (927) 422-34-30 </span></a>
+                      
+                    
+                        <span class="header__callback callback">ЗАКАЗАТЬ ЗВОНОК</span></div>
+					<ul class="head__nav">
+						<li class="head__nav__1"><a href="/#calculator">Калькулятор</a></li>
+						<li class="head__nav__1 head__nav__1-active">Наши работы
+							<ul class="head__nav__2">
+								<li><a href="{% url 'all_projects' %}">Все работы</a></li>
+							</ul>
+						</li>
+						<li class="head__nav__1 head__nav__1-active">Цены
+							<ul class="head__nav__2">
+								<li><a href="{% url 'pricelist' %}">Цены на ремонт квартир</a></li>
+                                <li><a href="http://rial-remont.ru/calculate/">Прайс на ремонтные работы</a></li>
+							</ul>
+						</li>
+						<li class="head__nav__1"><a href="{% url 'contacts' %}">Контакты</a></li>
+					</ul>
+				</div>
+			</header>
+			</div>
+			<nav class="main-navigation-wrap">
+				<div class="container"><img src="{% static 'img/close.png' %}" alt="" class="menu-close"/>
+					<ul class="mobile-nav1">
+						<li><a href="/">Главная</a></li>
+						<li><a href="{% url 'about' %}">О компании</a></li>
+						<li><a href="{% url 'all_projects' %}">Наши работы</a></li>
+						<li><a href="{% url 'pricelist' %}">Цены</a></li>
+						<li><a href="{% url 'contacts' %}">Контакты</a></li>
+					</ul>
+					<ul class="main-navigation">
+                        {% for m in menu %}
+                        <li class="lvl1">
+                            <a href="{% url 'category' m.slug %}">{{ m.name }}</a>
+							<ul class="submenu">
+                                {% for i in m.page_set.all %}
+								<li class="lvl2">
+                                    <a href="{% url 'category' i.slug %}">{{ i.name }}</a>
+                                    {% if i.page2_set.all %}
+									<ul class="submenu-lvl2">
+                                        {% for c in i.page2_set.all %}
+										<li><a href="{% url 'subcategory' i.slug c.slug %}">{{ c.name }}</a></li>
+                                        {% endfor %}
+									</ul>
+                                    {% endif %}
+								</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+
+						<li class="lvl1">
+                            <a href="/vidy_rabot/">Виды работ</a>
+							<ul class="submenu">
+                                {% for c in cats %}
+								<li class="lvl2">
+                                    <a href="{% url 'category' c.slug %}">{{ c.name }}</a>
+                                    {% if c.servicessubcategories_set.all %}
+									<ul class="submenu-lvl2">
+                                        {% for li in c.servicessubcategories_set.all %}
+                                            <li><a href="{% url 'subcategory' c.slug li.slug %}">{{ li.name }}</a></li>
+                                        {% endfor %}
+									</ul>
+                                    {% endif %}
+								</li>
+                                {% endfor %}
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<ul class="mobile-nav2">
+					<a href="{% url 'about' %}">
+					    <li class="page-n1">О компании</li>
+                    </a>
+                    <a href="/#sales">
+					    <li class="page-n2">Акции</li>
+                    </a>
+                    <a href="/#faq">
+					    <li class="page-n3">Вопрос-Ответ</li>
+                    </a>
+                    <a href="{% url 'replies' %}">
+					    <li class="page-n5">Книга отзывов</li>
+                    </a>
+				</ul>
+			</nav>
+		
+		<div class="head-mobile">
+			<div class="container">
+				<div class="mobile-menu"><img src="{% static 'img/burger.png' %}" alt=""/><span>Меню</span></div>
+				<div class="mobile-socials">
+
+                    {% for s in contacts.socials_set.all %}
+                    <a href="{{ s.href }}">
+                        <img src="/{{ s.img.url }}" alt=""/>
+                    </a>
+                    {% endfor %}
+
+                </div>
+			</div>
+		</div>
+       

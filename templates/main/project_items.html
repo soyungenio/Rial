@@ -1,0 +1,15 @@
+{% for project in projects_filter %}
+    <div class="block5__item">
+        <img src="/{{ project.projectimages_set.first.img.url }}" alt=""/>
+        <span class="block5__item__title">{{ project.title }} {{ project.square }}м2</span>
+        <div class="block5__item-hover">
+            <span class="price"><span>{{ project.price }}</span></span>
+            <span class="terms">Сроки: <span>от {{ project.time }} дней</span></span>
+        </div><a href="{% url 'project' project.slug %}">
+            <button class="button">Подробнее</button></a>
+        <div class="block5__item__bottom">
+            <span>{{ project.reply.name }}, {{ project.reply.address }}</span>
+            <a href="{% url 'project' project.slug %}">Смотреть отзыв</a>
+        </div>
+    </div>
+{% endfor %}

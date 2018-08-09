@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="thankpage">
+    <div class="container">
+        <div class="thankpage__block">
+            <span class="thankpage__title">СПАСИБО ЗА ОСТАВЛЕННУЮ ЗАЯВКУ</span>
+            <span class="thankpage__descriptor">Наш менеджер перезвонит вам в промежутке от 10 минут до 1 часа
+<br>и ответит на все ваши вопросы</span>
+            <div class="thankpage__act">Подпишись в социальных сетях и <span>получи промокод на 5%</span> <br>*скидки не суммируются</div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <script type="text/javascript" src="https://vk.com/js/api/openapi.js?154"></script>
+                    <!-- VK Widget -->
+                    <div id="vk_groups"style="margin: 45px auto auto;"></div>
+                    <script type="text/javascript">
+                        VK.Widgets.Group("vk_groups", {mode: 3, width: "280", height: "350"}, 166723359);
+                    </script>
+                </div>
+                <div class="col-sm-6">
+                    <a href="https://www.instagram.com/rialremont/" target="_blank"><img src="/static/img/instagram.png" style="margin-top: 32px;margin: 32px auto;display: block;" width="280"></a>
+                </div>
+            </div>
+            <a href="/"><button class="button">Главная страница</button></a>
+        </div>
+    </div>
+</section>
+    {% include 'main/sales.html' %}
+
+    {% include 'main/faq.html' %}
+
+{% endblock %}
+
+
+{% block title %}Спасибо за заявку{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="404">
+    <div class="container">
+        <div class="thankpage__block">
+            <span class="thankpage__title">Страница не найдена</span>
+            <span class="thankpage__descriptor">Возможно вы ошиблись с адресом </span>
+        </div>
+    </div>
+</section>
+    {% include 'main/sales.html' %}
+
+    {% include 'main/faq.html' %}
+
+{% endblock %}
+
+
+{% block title %}Спасибо за заявку{% endblock %}

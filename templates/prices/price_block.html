@@ -1,0 +1,63 @@
+<section class="block8" id="calculator">
+    <div class="container">
+        <div class="block8__block"><span class="section__title">Калькулятор стоимости ремонта</span><span class="block8__descriptor">Рассчитайте ориентировочную стоимость ремонта перед замером: </span>
+            <div class="block8__calc clearfix">
+                <div class="block8__left">
+                    <fieldset>
+                        <label class="block8__label">Выберите тип</label>
+                        <select id="place-type" name="place-type" form="calcid">
+                            {% for t in place_types %}
+                                <option>{{ t.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label class="block8__label">Выберите вид ремонта</label>
+                        <select id="repair-type" name="repair-type" form="calcid">
+                            {% for p in rem_type %}
+                                <option value="{{ p.name }}" data-price="{{ p.calcprice }}" data-term="{{ p.time }}" >{{ p.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label class="block8__label">Введите площадь объекта</label>
+                        <input type="text" id="square" value="120" name="square" form="calcid"/><span>м<sup>2</sup></span>
+                    </fieldset> 
+                    <fieldset>
+                        <label class="block8__label">Разрабатываем дизайн-проект?</label>
+                        <input type="radio" name="design" id="design1" value="Да" data-price="0" checked="checked" form="calcid"/>
+                        <label>Да</label>
+                        <input type="radio" name="design" id="design2" value="Нет" data-term="0" data-price="0" form="calcid"/>
+                        <label>Нет</label>
+                    </fieldset>
+                    <button class="button block8__calculte">Рассчитать стоимость</button>
+                </div>
+                <div class="block8__right"><span class="block8__label">Выполняемые работы:</span>
+                    {% for key,value in all_services.items %}
+                        <div class="block8__works"  data-calc="{{ key }}">
+                            {% for work in value %}
+                            <div class="block8__work">
+                                <input type="checkbox" name="work" data-price="{{ work.price }}" checked="checked"/>
+                                <label>{{ forloop.counter }}. {{ work.name }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="block8__result"><span class="total-price">Итого стоимость работ: <span></span> руб</span><span class="total-terms">Сроки работ: от <span class='min'></span> до <span class='max'></span> дней</span><span class="sell">Вы получаете скидку <span></span>% до конца лета 2018!</span><span class="block8__form__title">Забронируйте скидку:</span> 
+                <form class="block8__form" id="calcid">
+                    <input type="text" name="name" placeholder="Ваше имя" required="required"/>
+                    <input type="text" name="phone" placeholder="Ваш телефон" required="required"/>
+                    <input type="hidden" name="type" value="Заявка на ремонт"/>
+                    <input type="hidden" name="works"/>
+                    <button class="button">Забронировать скидку</button>
+                    <fieldset class="checkbox">
+                        <input type="checkbox" name="ch2" id="ch2" checked="checked"/>
+                        <label for="ch2">Я принимаю условия <br><a href='/politica'>политики конфиденциальности</a></label>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

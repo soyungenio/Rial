@@ -1,0 +1,24 @@
+<section class="block11">
+    <div class="container"><span class="section__title">Наша команда</span>
+        <div class="block11__slider owl-carousel">
+
+            {% for person in stuff %}
+            <div class="block11__slide clearfix">
+                <div class="block11__img-wrap">
+                    <img src="/{{ person.img.url }}" alt=""/>
+                </div>
+                <div class="block11__content">
+                    <span class="block11__name">{{ person.name }}</span>
+                    <span class="block11__job">{{ person.job }}</span>
+                    <ul>
+                        {% for li in person.stuffbullets_set.all %}
+                        <li>{{ li.text|safe }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

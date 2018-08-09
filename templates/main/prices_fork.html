@@ -1,0 +1,52 @@
+{% load static %}
+<section class="block6">
+    <div class="container"><span class="section__title">Стоимость ремонта</span>
+        <div class="block6__block clearfix">
+
+            {% for price in rem_type %}
+            <div class="block6__item">
+                <div class="block6__item__top"><img src="/{{ price.img.url }}" alt=""/>
+                    <span class="block6__item__title">{{ price.name }}</span>
+                    <a href="{% url 'fork' price.slug %}">Подробнее</a></div><span class="price">от <span>{{ price.price }}</span> руб/м<sup>2</sup></span>
+                <div class="block6__item__bottom">
+                    <div class="input-block">
+                        <label>Введите площадь:</label>
+                        <input type="text" value="0"/><span>м<sup>2</sup></span>
+                    </div>
+                    <button class="button">Рассчитать</button>
+                    <span class="price-block">Стоимость услуг: <span>0</span></span>
+                    <span class="block6__postscriptor">Стоимость является ориентировочной и служит для ознакомления</span>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<section class="block7">
+    <div class="container"><span class="section__title">Для расчета точной цены вызовите замерщика:</span>
+        <form class="block7__form">
+            <fieldset>
+                <div class="block7__input">
+                    <label>Вид ремонта</label>
+                    <select>
+                        {% for price in rem_type %}
+                        <option>{{ price.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="block7__input">
+                    <label>Ваш телефон</label>
+                    <input type="text" name="phone" placeholder="+7 (___) ___-__-__" required="required"/>
+                </div>
+            </fieldset>
+            <button class="button">Оставить заявку</button>
+            <input type="hidden" name="type" value="Заявка на выезд замерщика">
+            <fieldset class="checkbox">
+                <input type="checkbox" name="ch1" id="ch1" checked="checked"/>
+                <label for="ch1">Я принимаю условия <a href='/politica'>политики конфиденциальности</a></label>
+            </fieldset>
+        </form>
+    </div>
+</section>

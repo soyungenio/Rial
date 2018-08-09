@@ -1,0 +1,20 @@
+<section class="block1">
+    <div class="container"><span class="section__title">Какое помещение вам необходимо отремонтировать? </span>
+        <div class="block1__flex">
+
+            {% for type in types %}
+            <div class="block1__item">
+                <img src="/{{ type.img.url }}" alt=""/>
+                <span class="block1__item__title">{{ type.name }}</span>
+                <div class="block1__item-hover">
+                    <span class="price">от <span>{{ type.price }}</span></span>
+                    <span class="terms">Сроки: <span>{{ type.terms }}</span></span>
+                </div>
+                <a href="/{{ type.slug }}">
+                    <button class="button">Подробнее</button></a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

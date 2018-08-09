@@ -1,0 +1,155 @@
+{% load static %}
+
+        <section class="block14">
+			<div class="block14__bg">
+                <img src="{% static 'img/block14/bg.png' %}" alt=""/></div>
+			<div class="container">
+				<div class="block14__titles"><span class="block14__title title-min">С чего начать ремонт?</span><span class="block14__descriptor">Оставьте заявку на звонок, и мы бесплатно<br> поможем вам в ваших проблемах, связанных с ремонтом.</span></div>
+				<form class="block14__form">
+					<div class="block14__input-wrap">
+						<input type="text" name="name" placeholder="Ваше имя" required="required"/>
+                        <img src="{% static 'img/block14/1.png' %}" alt=""/>
+					</div>
+					<div class="block14__input-wrap">
+						<input type="text" name="phone" placeholder="Ваш телефон" required="required"/>
+                        <img src="{% static 'img/block14/2.png' %}" alt=""/>
+					</div>
+					<input type="hidden" name="type" value="Заявка - Узнать стоимость"/>
+					<button class="button">Заказать звонок</button>
+					<fieldset class="checkbox">
+						<input type="checkbox" name="ch3" id="ch3" checked="checked"/>
+						<label for="ch3">Я принимаю условия <br><a href='/politica'>политики конфиденциальности</a></label>
+					</fieldset>
+				</form>
+			</div>
+		</section>
+
+		<footer>
+			<div class="footer__top">
+				<div class="container">
+					<div class="footer__flex">
+						<div class="footer__block1">
+                            <a href="/"> 
+                                <img src="{% static 'img/logo.png' %}" width="174" alt="" class="footer__logo"/>
+                            </a> 
+                            <span class="footer__logo__title"> Отделка квартир и коттеджей в Казани</span>
+							<div class="footer__socials">
+                                <span>Мы в соц сетях</span>
+
+                                {% for s in contacts.socials_set.all %}
+                                <a target="_blank" href="{{ s.href }}">
+                                    <img src="/{{ s.img.url }}" alt=""/>
+                                </a>
+                                {% endfor %}
+
+                            </div>
+						</div>
+						<div class="footer__list"><span class="footer__list__title f-mobile">Полезная информация</span>
+							<ul>
+								<li><a href="{% url 'calculate' %}">Цены на ремонт</a></li>
+								<li><a href="/#calculator">Калькулятор ремонта</a></li>
+								<li><a href="{% url 'about' %}">О компании</a></li>
+								<li><a href="{% url 'replies' %}">Книга отзывов</a></li>
+								<li><a href="/#faq">Вопрос-ответ</a></li>
+								<li><a href="{% url 'all_projects' %}">Наши работы</a></li>
+							</ul>
+						</div>
+						<div class="footer__list"><span class="footer__list__title f-mobile">Услуги</span>
+							<ul>
+								<li><a href="">Все услуги</a></li>
+								<li><a href="">Дизайн интерьера</a></li>
+								<li><a href="">Ремонт квартир</a></li>
+								<li><a href="">Ремонт коттеджей</a></li>
+								<li><a href="">Ремонт комнаты</a></li>
+								<li><a href="">Ремонт ванной комнаты</a></li>
+								<li><a href="{% url 'pricelist' %}">Виды работ</a></li>
+							</ul>
+						</div>
+						<div class="footer__block2"><span class="footer__list__title">Контактная информация</span><span class="footer__phone__pre">Бесплатный звонок на 8 800:  </span>
+							<ul>  
+								<li>
+                                    <img src="{% static 'img/footer/1.png' %}" alt=""/>
+
+                                    <span class="phone">
+                                        {% for p in contacts.contactsphones_set.all %}
+                                  <a href="tel:88005114326">          {{ p.phone }}{% if not forloop.last %}<br>{% endif %}
+                                        {% endfor %}</a>
+                                    </span> 
+                                </li>
+								<li><img src="{% static 'img/footer/2.png' %}" alt=""/><span>{{ contats.address }}</span></li>
+								<li><img src="{% static 'img/footer/3.png' %}" alt=""/><span>{{ contacts.time }}</span></li>
+								<li><img src="{% static 'img/footer/4.png' %}" alt=""/><span>{{ contacts.email }}</span></li>
+								<li>
+                                    <img src="{% static 'img/footer/5.png' %}" alt=""/>
+                                    <span>
+                                        {% for p in contacts.contactsbusiness_set.all %}
+                                            {{ p.business }}{% if not forloop.last %}<br>{% endif %}
+                                        {% endfor %}
+                                    </span>
+                                </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<div class="container">
+					<span>© 2007-2018 Ремонт квартир под ключ в Казани - Компания «РИАЛстрой». Правовая информация. Сайт не является публичной офертой и носит информационный характер. Обращаясь в нашу фирму для консультации через формы обратной связи, вы даете согласие на обработку ваших персональных данных</span><br>
+					<a href="/sitemap"><span>Карта сайта</span></a>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<div class="layer">
+		<div class="popup"><img src="{% static 'img/popup/close.png' %}" alt="" class="close"/><span class="popup__title">ЗАКАЗАТЬ ЗВОНОК</span><span class="popup__descriptor">Укажите промежуток времени, во сколько вам перезвонить</span>
+			<form class="popup__form">
+					{% csrf_token %}
+				<label>Ваше имя и время звонка</label>
+				<input type="text" name="name" placeholder="Иван в 16:00-17:00" required="required"/>
+				<label>Номер телефона</label>
+				<input type="text" name="phone" placeholder="+7 (___) ___-__-__" required="required"/>
+				<input type="hidden" name="type" value="Заявка на бесплатную консультацию"/>
+				<button class="button">Заказать звонок</button>
+				<fieldset class="checkbox">
+					<input type="checkbox" name="ch1" id="ch1" checked="checked"/>
+					<label for="ch1">Я принимаю условия <a href='/politica'>политики конфиденциальности</a></label>
+				</fieldset><span class="work-time">Режим работы: ежедневно с 10:00 до 22:00</span>
+			</form><img src="{% static 'img/popup/1.png' %}" alt="" class="popup__bg"/> 
+		</div>
+
+		<div class="thank"><span class="thank__title">СПАСИБО ЗА ОСТАВЛЕННУЮ ЗАЯВКУ</span><span class="thank__text">Наш менеджер перезвонит в указанное время <br> и ответит на все ваши вопросы</span><span class="thank__trigger">Подпишись в социальных сетях и <span>получи промокод на 5%</span></span>
+			<div class="thank__flex">
+                <a href="" target="_blank" class="thank__item"><img src="{% static 'img/thank/1.png' %}" alt=""/></a>
+                <a href="" target="_blank" class="thank__item"><img src="{% static 'img/thank/2.png' %}" alt=""/></a>
+            </div>
+            <a href="/">
+				<button class="button">Главная страница</button>
+            </a>
+		</div>
+
+		<div class="readfeedback">
+			<img src="{% static 'img/popup/close.png' %}" alt="" class="close"/>
+			<div class="readfeedback__container">
+				<span class="readfeedback__title">Посмотрите отзыв клиента:</span>
+				<span class="readfeedback__descrip"><b>Ремонт 2-х комнатной квартиры в ЖК «Магеллан»</b><br>
+<span style="font-size: 15px;">Рафис Гильмутдинов, Казань, 50 лет</span></span>
+				<div class="feedback">
+					<!--<img src="{% static 'img/replies/2.jpg' %}" class="photo"/>-->
+					<div class="feedback-text">
+						<!--<img class="commas" src="{% static 'img/popup/feedback/commas.jpg' %}" />-->
+						<!--<span class="text">шло 10 лет после ремонта квартиры и нет ни одного замечания
+							по качеству....</span>-->
+                            <span class="block4__review"><img src="../../../../../static/img/feedback/2.jpeg" style="width: 200px;" alt=""></span></div>
+				</div>
+				<!--<img src="{% static 'img/popup/feedback/room-photo.jpg' %}" class="room-photo img-responsive"/>-->
+			</div>
+			<a href="http://rial-remont.ru/project/1magellan/"><button class="button" style="background-color: #55ac06;">Читать отзыв</button></a>
+		</div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="{% static 'libs/jquery-nice-select-1.1.0/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'libs/owl-carousel/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'libs/fancybox/jquery.fancybox.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/mask.js' %}"></script>
+</body>

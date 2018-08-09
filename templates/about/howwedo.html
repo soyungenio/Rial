@@ -1,0 +1,19 @@
+<section class="block10">
+    <div class="container"><span class="section__title">Как мы работаем</span>
+        <div class="block10__flex">
+
+            {% for block in howwedo %}
+            <div class="block10__item">
+                <div class="block10__head">
+                    <div class="block10__num">
+                        <span>{% if forloop.counter < 10 %}0{% endif %}{{ forloop.counter }}</span>
+                    </div>
+                    <span class="block10__item__title">{{ block.title }}</span>
+                </div>
+                <span class="block10__text">{{ block.text|safe }}</span>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <nav class="headcrumbs">
+        <div class="container"><span><a href='/'>Главная</a> / {{ title }}</span></div>
+    </nav>
+
+    {% include 'about/replies.html' %}
+
+{% endblock %}

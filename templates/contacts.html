@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <nav class="headcrumbs">
+        <div class="container"><span><a href='/'>Главная</a> / <a href='/about'>О компании</a> / {{ title }}</span></div>
+    </nav>
+
+    <section class="contacts">
+        <div class="container"><span class="section__title">Контакты</span><span class="contacts__descriptor">Свяжитесь с нами любым удобным способом:</span>
+            <div class="contacts__block clearfix">
+                <div class="contacts__left">
+                    <div class="contacts__column">
+                        <div class="contacts__item">
+                            <span class="contacts__item__title">Наш адрес:</span>
+                            <span class="contact"><img src="{% static 'img/contacts/1.png' %}" />  {{ contacts.address }}</span></div>
+                        <div class="contacts__item">
+                            <span class="contacts__item__title">Электронная почта:</span>
+                            <span class="contact"><img src="{% static 'img/contacts/2.png' %}" />  {{ contacts.email }}</span></div>
+                        <div class="contacts__item">
+                            <span class="contacts__item__title">Реквизиты</span>
+                            {% for c in contacts.contactsbusiness_set.all %}
+                                <span class="contact"><img src="{% static 'img/contacts/3.png' %}" />  {{ c.business }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="contacts__column">
+                        <div class="contacts__item">
+                            <span class="contacts__item__title">Режим работы:</span>
+                            <span class="contact"><img src="{% static 'img/contacts/4.png' %}" /> {{ contacts.time }}</span></div>
+                        <div class="contacts__item">
+                            <span class="contacts__item__title">Телефон:</span>
+                            {% for s in contacts.contactsphones_set.all %}
+                            <span class="contact"><img src="{% static 'img/contacts/5.png' %}" />  {{ s.phone }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="contacts__item">
+                            <span class="contacts__item__title">Мы в соц. сетях</span>
+                            <span class="contact__socials">
+                                {% for s in contacts.socials_set.all %}
+                                    <a href="{{ s.href }}">
+                                        <img src="/{{ s.img.url }}" alt=""/>
+                                    </a>
+                                {% endfor %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contacts__right">
+                    {{ contacts.map|safe }}
+                </div>
+            </div>
+        </div>
+        <div class="contacts__map-mobile"><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A46ed08c0ebd3df464dc75c79e3ff1eaf7fe470b2bb6a1ea0a15b28b42a069a5c&amp;width=100%25&amp;height=100%&amp;lang=ru_RU&amp;scroll=true"></script></div>
+    </section>
+
+{% endblock %}

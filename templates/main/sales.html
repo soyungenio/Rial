@@ -1,0 +1,23 @@
+<section class="block9" id="sales">
+    <span class="section__title">Акции и скидки</span>
+    <div class="block9__slider owl-carousel">
+
+        {% for item in sales %}
+        <div class="block9__slide">
+            <div class="container">
+                <div class="block9__img-wrap">
+                    <img src="/{{ item.img.url }}" alt=""/>
+                </div>
+                <div class="block9__block">
+                    <span class="block9__item__title1">{{ item.title1|safe }}</span>
+                    <span class="block9__item__title2">{{ item.title2|safe }}</span>
+                    <span class="block9__item__text">{{ item.text|safe }}</span>
+                    <button class="button">Оставить заявку</button>
+                    <span class="block9__phone">Подробности по телефону: <span><a href="tel:88005114326"> 8 (800) 511-43-26</a> <span style="font-size:12px;">(звонок бесплатный)</span></span></span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>

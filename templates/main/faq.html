@@ -1,0 +1,59 @@
+<section class="block13" id="faq">
+    <div class="container"><span class="section__title">Вопрос-Ответ</span>
+        <div class="block13__block clearfix">
+
+            <div class="block13__left">
+
+                {% for f in questions %}
+                    {% if forloop.counter|divisibleby:"2" %}
+                    {% else %}
+                        <div class="block13__item">
+                        <div class="block13__head{% if forloop.first %} block13__head-active{% endif %}">
+                            <span>{{ f.question|safe }}</span>
+                        </div>
+                        <div{% if forloop.first %} style="display: block;"{% endif %} class="block13__body{% if forloop.first %} block13__body-active{% endif %}">
+                            <span class="block13__text">{{ f.answer|safe }}</span>
+                            <div class="block13__person">
+                                <div class="block13__img-wrap">
+                                    <img src="/{{ f.person.img.url }}" alt=""/>
+                                </div>
+                                <div class="block13__person__text">
+                                    <span class="block13__name">{{ f.person.name }}</span>
+                                    <span class="block13__job">{{ f.person.job }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+            <div class="block13__right">
+
+                {% for f in questions %}
+                    {% if forloop.counter|divisibleby:"2" %}
+                    <div class="block13__item">
+                        <div class="block13__head{% if forloop.first %} block13__head-active{% endif %}">
+                            <span>{{ f.question|safe }}</span>
+                        </div>
+                        <div{% if forloop.first %} style="display: block;"{% endif %} class="block13__body{% if forloop.first %} block13__body-active{% endif %}">
+                            <span class="block13__text">{{ f.answer|safe }}</span>
+                            <div class="block13__person">
+                                <div class="block13__img-wrap">
+                                    <img src="/{{ f.person.img.url }}" alt=""/>
+                                </div>
+                                <div class="block13__person__text">
+                                    <span class="block13__name">{{ f.person.name }}</span>
+                                    <span class="block13__job">{{ f.person.job }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>

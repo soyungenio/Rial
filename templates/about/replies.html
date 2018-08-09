@@ -1,0 +1,26 @@
+<section class="about__block3">
+    <div class="container"><span class="section__title">Наши отзывы</span>
+        <div class="about__block3__block">
+
+            {% for reply in replies %}
+            <div class="about__block3__item clearfix">
+                <div class="about__block3__img-wrap">
+                    <img src="/{{ reply.img.url }}" alt=""/>
+                </div>
+                <div class="about__block3__right">
+                    <span class="name">{{ reply.name }}, {{ reply.address }}, {{ reply.age }} лет</span>
+                    <span class="text">{{ reply.text|safe }}</span>
+                    {% if reply.projects_set.first %}
+                    <span class="type">{{ reply.projects_set.first.title }}</span>
+                    
+                    <a href="{% url 'project' reply.projects_set.first.slug %}">
+                        <button class="button">Смотреть фото</button>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

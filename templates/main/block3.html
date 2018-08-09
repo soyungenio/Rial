@@ -1,0 +1,19 @@
+<section class="block3">
+    <div class="container"><span class="section__title">Ремонт квартир в Казани под ключ</span><span class="section__descriptor">Ощутите преимущества и качество с компанией РиалСтрой</span>
+        <div class="block3__flex">
+
+            {% for item in block3_items %}
+            <div class="block3__item">
+                <img src="{{ item.img.url }}" alt=""/>
+                <span class="block3__item__title">{{ item.name }}</span>
+                <ul>
+                    {% for li in item.block3maintext_set.all %}
+                    <li>{{ li.text|safe }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

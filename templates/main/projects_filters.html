@@ -1,0 +1,27 @@
+<section class="block5{% if all %} all-page-block{% endif %}">
+    <div class="container">
+        <!--<div class="block5__tabs1">
+            {% for type in types %}
+            <div class="block5__tab{% if forloop.first %} block5__tab1-active{% endif %}" data-type="{{ type.name }}"
+            data-all="{{ data_all }}">
+                <span>{{ type.name }}</span>
+            </div>
+            {% endfor %}
+        </div>-->
+        <div class="block5__tabs2">
+            <div class="block5__tab block5__tab2-active" data-filter="all" data-all="{{ data_all }}"><span>Все работы</span></div>
+            
+            <!--<div class="block5__tab" data-filter="design" data-all="{{ data_all }}"><span>С дизайн проектом</span></div>
+            <div class="block5__tab" data-filter="no-design" data-all="{{ data_all }}"><span>Без дизайн проекта</span></div>-->
+        </div>  
+        <div class="block5__flex">
+
+            {% include 'main/project_items.html' %}
+
+        </div>
+
+        <a href="{% url 'all_projects' %}">
+            <button class="button all-works-btn">Смотреть все работы</button>
+        </a>
+    </div>
+</section>

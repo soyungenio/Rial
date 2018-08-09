@@ -1,0 +1,28 @@
+<main>
+    <div class="owl-carousel main-slider">
+
+        {% for slide in main_slides %}
+        <div class="main__item">
+            <div class="container">
+                <div class="main__left">
+                    <span class="main__title">
+                        {% if slide.title_img %}
+                        <img src='{{ slide.title_img.url }}' />
+                        {% endif %}
+                        {{ slide.title|safe }}
+                    </span>
+                    <span class="main__text">{{ slide.text|safe }}</span>
+                    <div class="main__left__img-wrap"><img src="{{ slide.background.url }}" alt=""/></div>
+                    <a href="{% if slide.href %}{{ slide.href }}{% endif %}" target="_blank">
+                        <button class="button">{{ slide.button_text }}</button>
+                    </a>
+                </div>
+                <div class="main__right">
+                    <div class="main__img-wrap"><img src="{{ slide.background.url }}" alt=""/></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</main>

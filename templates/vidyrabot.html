@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <section class="deatil-page__content">
+        <div class="container">
+            <div class="content">
+                <div class="container">
+                    <div class="detail-page__item">
+                        <span class="case-title">Виды работ</span>
+
+                    </div>
+                    
+                </div>
+                <div class="container">
+                    <div class="about__block1__flex">
+                        <div class="about__block1__item">
+                            <img src="../../../../../static/img/check.png" alt="" />
+                            <span>12 лет на рынке</span>
+                        </div>
+                        <div class="about__block1__item">
+                            <img src="../../../../../static/img/check.png" alt="" />
+                            <span>более 134 довольных
+                                <br />клиентов</span>
+                        </div>
+                        <div class="about__block1__item">
+                            <img src="../../../../../static/img/check.png" alt="" />
+                            <span>87 из 100 обратившихся
+                                <br />становятся клиентами</span>
+                        </div>
+                    </div>
+                    <button class="button about-btn">Заказать ремонт</button>
+                </div>
+            </div>
+            <span class="content__postscript">Есть еще вопросы? Задайте их специалисту: {{ contacts.contactsphones_set.first.phone }}. {{ contacts.time }}. <br>РИАЛстрой – ремонт всегда на 5!</span>
+        </div>
+    </section>
+
+    {% include 'prices/price_block.html' %}
+
+    {% include 'main/sales.html' %}
+
+    {% include 'main/types.html' %}
+
+{% endblock %}

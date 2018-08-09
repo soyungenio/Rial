@@ -1,0 +1,25 @@
+<section class="block12">
+    <div class="container"><span class="section__title">Используем современное оборудование</span>
+        <div class="block12__slider owl-carousel">
+
+            {% for tool in tools %}
+            <div class="block12__slide clearfix">
+                <div class="block12__img-wrap">
+                    <img src="/{{ tool.img.url }}" alt=""/>
+                </div>
+                <div class="block12__content">
+                    <span class="block12__d">{{ tool.name }}</span>
+                    <span class="block12__a">Ваши выгоды:</span>
+                    <ul>
+                        {% for li in tool.toolsbullets_set.all %}
+                        <li>{{ li.text|safe }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+</section>

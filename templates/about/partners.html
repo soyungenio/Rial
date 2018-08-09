@@ -1,0 +1,19 @@
+<section class="about__block2">
+    <div class="container"><span class="about__block2__title">работая с нами, вы получаете <span>скидки от Наших партнеров:</span></span>
+        <div class="about__block2__flex">
+
+            {% for partner in partners %}
+            <div class="about__block2__item">
+                <div class="about__block2__img-wrap">
+                    {% if partner.img %}
+                    <img src="/{{ partner.img.url }}" alt=""/>
+                    {% endif %}
+                </div>
+                <span>{{ partner.name }}</span>
+                <a href="">Смотреть нашу работу</a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>

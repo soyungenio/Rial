@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="block4__item clearfix"{% if a %} style="margin-top: 50px;"{% endif %}>
+            <div class="block4__left owl-carousel">
+                {% for img in project.projectimages_set.all %}
+                <div class="block4__img-wrap"><img data-src="/{{ img.img.url }}" class="owl-lazy"/></div>
+                {% endfor %}
+            </div>
+            <div class="block4__right">
+                <div class="block4__head">
+                    <div class="block4__head-img">
+                        <img src="/{{ project.reply.img.url }}" alt=""/>
+                    </div>
+                    <span class="block4__head-text">{{ project.reply.name }}, {{ project.reply.address }}, {{ project.reply.age }} лет</span>
+                </div>
+                <span class="block4__review">{{ project.reply.text|safe }}</span>
+                <span class="block4__right__title">{{ project.title }}</span>
+                <ul>
+                    <li>Площадь: {{ project.square }}м<sup>2</sup></li>
+                    <li>Сроки: {{ project.time }} дней</li>
+                    <li>Цена: {{ project.price }} рублей</li>
+                </ul>
+                <div class="block4__bottom">
+                    <span>Особенности ремонта</span>
+                    <a href="{% url 'project' project.slug %}">Читать подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

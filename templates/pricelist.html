@@ -1,0 +1,329 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <nav class="headcrumbs">
+        <div class="container"><span><a href='/'>Главная</a> / {{ title }}</span></div>
+    </nav>
+
+    <section class="price__block1">
+        <div class="container"><span class="section__title">Цены на ремонт квартир</span><span class="price__block1__descriptor">Мы выполняем все виды ремонта от косметики комнат, до капитального ремонта квартир, офисов, коттеджей, кафе, ресторанов.</span>
+            <!--<div class="price__block1__block clearfix">
+                <div class="price__block1__left">
+                    <ul>
+                        <li class="price__menu__item price__menu-active price-i"> <span>Стоимость за квадратный метр</span></li>
+
+                        {% for category in categories %}
+                        <li class="price__menu__item">
+                            <span class="price-head">{{ category.name }}</span>
+                            <ul {% if forloop.first %}style="display:block" {% endif %}class="price__submenu">
+                                {% for s in category.servicessubcategories_set.all %}
+                                    <li class="price-i">{{ s.name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+
+
+                    </ul>
+                </div>
+                <div class="price__block1__right">
+                    <div class="price__block1__item price__current-item">
+                        <span class="price__block1__right__title">Ремонт квартир под ключ (цена за квадратный метр)</span>
+                        <ul class="price__block1__pricelist">
+                            {% for i in rem_type %}
+                            <li class="clearfix">
+                                <span class="a">{{ i.name }}</span>
+                                <span class="b">от {{ i.price }} руб/м2</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    {% for category in subcategories %}
+                        <div class="price__block1__item">
+                            <span class="price__block1__right__title">{{ category.name }}</span>
+                            <div class="price__block1__flex">
+                                {% for i in category.services_set.all %}
+                                    <div class="price__block1__flex__item">
+                                        <span class="t">{{ i.name }}</span>
+                                        <img src="/{{ i.img.url }}" alt=""/>
+                                        <span class="hov">от {{ i.price }} руб/м2</span>
+                                        <a href="{% url 'service' category.cateory.slug category.slug i.slug %}">
+                                            <button class="button">Подробнее</button></a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </section>-->
+    
+     <div class="price__block1__block clearfix">
+                <div class="price__block1__left">
+                    <ul>
+                        <li class="price__menu__item price__menu-active price-i"> <span>Стоимость за квадратный метр</span></li>
+
+                      <!--  
+                        <li class="price__menu__item">
+                            <span class="price-head">Отделочные работы</span>
+                            <ul style="display:block" class="price__submenu">
+                                
+                                    <li class="price-i">Гипсокартон</li>
+                                
+                                    <li class="price-i">Плитка</li>
+                                
+                                    <li class="price-i">Потолки</li>
+                                
+                                    <li class="price-i">Стены</li>
+                                
+                                    <li class="price-i">Полы</li>
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="price__menu__item">
+                            <span class="price-head">Сантехнические работы</span>
+                            <ul class="price__submenu">
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="price__menu__item">
+                            <span class="price-head">Электромонтажные работы</span>
+                            <ul class="price__submenu">
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="price__menu__item">
+                            <span class="price-head">Штукатурные работы</span>
+                            <ul class="price__submenu">
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="price__menu__item">
+                            <span class="price-head">Отопление</span>
+                            <ul class="price__submenu">
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="price__menu__item">
+                            <span class="price-head">Демонтажные работы</span>
+                            <ul class="price__submenu">
+                                
+                                    <li class="price-i">Демонтаж старой стяжки</li>
+                                
+                            </ul>
+                        </li>
+                        -->
+
+
+                    </ul>
+                </div>
+                <div class="price__block1__right">
+                    <div class="price__block1__item price__current-item">
+                      <h1 class="price__block1__right__title">Ремонт квартир под ключ (цена за квадратный метр)</h1>
+                        <ul class="price__block1__pricelist">
+                            
+                            <li class="clearfix">
+                                <span class="a">Капитальный ремонт под ключ</span>
+                                <span class="b">от 3500 руб/м2</span>
+                            </li>
+                            
+                            <li class="clearfix">
+                                <span class="a">Косметический ремонт под ключ</span>
+                                <span class="b">от 3000 руб/м2</span>
+                            </li>
+                            
+                            <li class="clearfix">
+                                <span class="a">Дизайнерский ремонт под ключ</span>
+                                <span class="b">от 4500 руб/м2</span>
+                            </li>
+                            
+                        </ul>
+                        
+                        <h2>Цены на отделочные работы </h2>
+                          
+                          <h3 class="price__block1__right__title">Ремонт пола в Казани</h3>
+       <div class="price__block1__flex">
+                            
+               
+								
+                                <div class="price__block1__flex__item"><span class="t">Стяжка пола</span><img src="http://rial-remont.ru/static/img/price/9.jpg" alt=""/><span class="hov">от 250 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Наливной пол</span><img src="http://rial-remont.ru/static/img/price/10.jpg" alt=""/><span class="hov">от 150 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Тёплый пол</span><img src="http://rial-remont.ru/static/img/price/11.jpg" alt=""/><span class="hov">от 500 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">                             Гидроизоляция</span><img src="http://rial-remont.ru/static/img/price/12.jpg" alt=""/><span class="hov">от 100 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Деревянный пол</span><img src="http://rial-remont.ru/static/img/price/8.jpg" alt=""/><span class="hov">от 250 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Укладка ламината</span><img src="http://rial-remont.ru/static/img/price/13.jpg" alt=""/><span class="hov">от 150 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+
+                    </div>
+                    
+                    <h3 class="price__block1__right__title">Ремонт стен </h3>
+                    
+                    <div class="price__block1__flex">                                           
+								
+                                <div class="price__block1__flex__item"><span class="t">Штукатурка стен</span><img src="http://rial-remont.ru/static/img/price/1.jpg" alt=""/><span class="hov">от 250 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Покраска стен</span><img src="http://rial-remont.ru/static/img/price/2.jpg" alt=""/><span class="hov">от 120 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Поклейка обоев</span><img src="http://rial-remont.ru/static/img/price/3.jpeg" alt=""/><span class="hov">от 800 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">                             Перегородки</span><img src="http://rial-remont.ru/static/img/price/4.jpg" alt=""/><span class="hov">от 250 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Шумоизоляция стен</span><img src="http://rial-remont.ru/static/img/price/5.jpg" alt=""/><span class="hov">от 100 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Штробление</span><img src="http://rial-remont.ru/static/img/price/6.jpg" alt=""/><span class="hov">от 150 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+                                        <div class="price__block1__flex__item"><span class="t">Проемы в стенах</span><img src="http://rial-remont.ru/static/img/price/7.jpg" alt=""/><span class="hov">от 1500 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+
+                    </div>
+                    
+                    <h3 class="price__block1__right__title">Ремонт потолков </h3>
+                    
+                    <div class="price__block1__flex">                                           
+								
+                                <div class="price__block1__flex__item"><span class="t">Подвесные потолки</span><img src="http://rial-remont.ru/static/img/price/14.jpg" alt=""/><span class="hov">от 150 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Потолки из гипсокартона</span><img src="http://rial-remont.ru/static/img/price/15.jpg" alt=""/><span class="hov">от 500 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Натяжные потолки(1-уровневые, многоуровневые)</span><img src="http://rial-remont.ru/static/img/price/37.jpg" alt=""/><span class="hov">от 250 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">                             Штукатурка потолка под маяк</span><img src="http://rial-remont.ru/static/img/price/16.jpg" alt=""/><span class="hov">от 300 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Покраска потолка</span><img src="http://rial-remont.ru/static/img/price/17.jpg" alt=""/><span class="hov">от 100 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Реечный потолок</span><img src="http://rial-remont.ru/static/img/price/18.jpg" alt=""/><span class="hov">от 150 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+                                        
+
+                    </div>
+                     <h3 class="price__block1__right__title">Цена на укладку плитки: </h3>
+                    
+                    <div class="price__block1__flex">                                           
+								
+                                <div class="price__block1__flex__item"><span class="t">Укладка плитки на стену</span><img src="http://rial-remont.ru/static/img/price/19.jpg" alt=""/><span class="hov">от 500 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Укладка плитки на пол</span><img src="http://rial-remont.ru/static/img/price/20.jpg" alt=""/><span class="hov">от 450 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Плитка в ванной</span><img src="http://rial-remont.ru/static/img/price/21.jpg" alt=""/><span class="hov">от 500 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">                             Мозаика</span><img src="http://rial-remont.ru/static/img/price/22.jpg" alt=""/><span class="hov">от 700 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Керамогранит</span><img src="http://rial-remont.ru/static/img/price/23.jpg" alt=""/><span class="hov">от 500 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								     
+                    </div>
+                    
+ <h3 class="price__block1__right__title">Монтаж гипсокартона: </h3>
+                    
+                    <div class="price__block1__flex">                                           
+								
+                                <div class="price__block1__flex__item"><span class="t">Перегородки из гипсокартона с шумоизоляцией</span><img src="http://rial-remont.ru/static/img/price/24.jpg" alt=""/><span class="hov">от 250 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Перегородки из гипсокартона без шумоизоляции</span><img src="http://rial-remont.ru/static/img/price/25.jpg" alt=""/><span class="hov">от 250 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Обшивка стен гипсокартоном</span><img src="http://rial-remont.ru/static/img/price/26.jpg" alt=""/><span class="hov">от 200 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">                             Потолки из гипсокартона</span><img src="http://rial-remont.ru/static/img/price/27.jpg" alt=""/><span class="hov">от 350 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+																     
+                    </div>
+
+  <h2 class="price__block1__right__title">Цены на инженерные работы </h2>
+  
+   <div class="price__block1__flex">  
+                          
+                           <div class="price__block1__flex__item"><span class="t">Сантехника</span><img src="http://rial-remont.ru/static/img/price/28.jpg" alt=""/><span class="hov">от 500 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Электрика</span><img src="http://rial-remont.ru/static/img/price/29.jpg" alt=""/><span class="hov">от 300 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Установка техники</span><img src="http://rial-remont.ru/static/img/price/30.jpg" alt=""/><span class="hov">от 200 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								
+                    </div>
+                    
+                     <h2 class="price__block1__right__title">Демонтажные работы: </h2>
+  
+   <div class="price__block1__flex">  
+                          
+                           <div class="price__block1__flex__item"><span class="t">Демонтаж старой стяжки</span><img src="http://rial-remont.ru/static/img/price/31.jpg" alt=""/><span class="hov">от 100 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Демонтаж стен и перегородок</span><img src="http://rial-remont.ru/static/img/price/32.jpg" alt=""/><span class="hov">от 100 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Демонтаж деревянного пола</span><img src="http://rial-remont.ru/static/img/price/33.jpg" alt=""/><span class="hov">от 50 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+                                        <div class="price__block1__flex__item"><span class="t">Демонтаж Ванны</span><img src="http://rial-remont.ru/static/img/price/34.jpg" alt=""/><span class="hov">от 300 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Демонтаж подоконников</span><img src="http://rial-remont.ru/static/img/price/35.jpg" alt=""/><span class="hov">от 100 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								<div class="price__block1__flex__item"><span class="t">Демонтаж старой сантехники</span><img src="http://rial-remont.ru/static/img/price/36.jpg" alt=""/><span class="hov">от 300 руб/м2</span><a href="">
+										<button class="button">Подробнее</button></a></div>
+								
+                    </div>
+                    
+                        <div class="price__block1__item">
+                            <span class="price__block1__right__title">Полы</span>
+                            <div class="price__block1__flex">
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="price__block1__item">
+                            <span class="price__block1__right__title">Стены</span>
+                            <div class="price__block1__flex">
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="price__block1__item">
+                            <span class="price__block1__right__title">Потолки</span>
+                            <div class="price__block1__flex">
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="price__block1__item">
+                            <span class="price__block1__right__title">Плитка</span>
+                            <div class="price__block1__flex">
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="price__block1__item">
+                            <span class="price__block1__right__title">Гипсокартон</span>
+                            <div class="price__block1__flex">
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="price__block1__item">
+                            <span class="price__block1__right__title">Демонтаж старой стяжки</span>
+                            <div class="price__block1__flex">
+                                
+                            </div>
+                        </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+{% endblock %}

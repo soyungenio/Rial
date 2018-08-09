@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!--
+    <section class="about__block1">
+        <div class="container"><span class="section__title">О компании</span> 
+            <p>Компания «РиалСтрой» начади свою деятельность на рынке с 2007 года. За этот период мы смогли стать компанией по внутренней отделке помещений различного назначения, входящих в ТОП лидеров рынка. Мы выполняем все виды ремонта от косметики комнат, до капитального ремонта квартир, офисов и коттеджей</p>
+            <div class="about__block1__flex">
+                <div class="about__block1__item"><img src="{% static 'img/check.png' %}" alt=""/><span>12 лет на рынке</span></div>
+                <div class="about__block1__item"><img src="{% static 'img/check.png' %}" alt=""/><span>более 134 довольных<br>клиентов</span></div>
+                <div class="about__block1__item"><img src="{% static 'img/check.png' %}" alt=""/><span>87 из 100 обратившихся<br>становятся клиентами</span></div>
+            </div>
+            <button class="button about-btn">Заказать ремонт</button>
+        </div>
+    </section>
+-->
+    <section class="detail-page__case">
+        <div class="container">
+
+            {% for i in cases %}
+            <div class="detail-page__item">
+                <span class="case-title">{{ i.title }}</span>
+                {# <span class="case-address"></span>#}
+                <span class="case-square">Площадь: {{ i.square }}м2.</span>
+                <span class="case-works">Выполненные работы: {{ i.works }}</span>
+                <span class="case-price">Стоимость: {{ i.price }} руб.</span>
+                <div class="case__flex">
+                    {% for img in i.projectimages_set.all|slice:"0:4" %}
+                    <div class="case__img-wrap">
+                        <img src="/{{ img.img.url }}" alt=""/>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <!--<a href="{% url 'all_projects' %}"><button class="more-btn button">Смотреть все работы</button></a>-->
+        </div>
+    </section>
+
+    <section class="deatil-page__content">
+        <div class="container">
+            <div class="content">
+                <div class="container">
+                        <div class="detail-page__item">
+                            <span class="case-title">{{ project.name|safe }}</span>
+                            <span class="case-square">Площадь: {{ project.square|safe }}м2. Сроки: {{ project.time|safe }}. </span>
+                            <span class="case-works">{{ project.works|safe }}</span>
+                            <span class="case-price">Стоимость: {{ project.price|safe }} руб.</span>
+                            {{ project.detail_page_content|safe }}
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="about__block1__flex">
+                            <div class="about__block1__item">
+                                <img src="../../../../../static/img/check.png" alt="" />
+                                <span>12 лет на рынке</span>
+                            </div>
+                            <div class="about__block1__item">
+                                <img src="../../../../../static/img/check.png" alt="" />
+                                <span>более 134 довольных
+                                    <br />клиентов</span>
+                            </div>
+                            <div class="about__block1__item">
+                                <img src="../../../../../static/img/check.png" alt="" />
+                                <span>87 из 100 обратившихся
+                                    <br />становятся клиентами</span>
+                            </div>
+                        </div>
+                        <button class="button about-btn">Заказать ремонт</button>
+                    </div>
+            </div>
+            <span class="content__postscript">Есть еще вопросы? Задайте их специалисту: {{ contacts.contactsphones_set.first.phone }}. {{ contacts.time }}. <br>РИАЛстрой – ремонт всегда на 5!</span>
+        </div>
+    </section>
+
+    {% include 'prices/price_block.html' %}
+
+    {% include 'main/sales.html' %}
+
+    {% include 'main/types.html' %}
+
+{% endblock %}
